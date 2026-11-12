@@ -33,9 +33,9 @@ def run_case(case, args):
 
 def main():
     parser = argparse.ArgumentParser(description='Chạy agent và chấm eval 0–100')
-    choices = ['openai', 'gemini', 'anthropic', 'openrouter']
+    choices = ['openai', 'gemini', 'anthropic', 'openrouter', 'groq', 'nvidia', 'deepseek']
     parser.add_argument('--provider', choices=choices, default=os.getenv('PROVIDER', 'openai'))
-    parser.add_argument('--model', default=os.getenv('MODEL'))
+    parser.add_argument('--model', default=os.getenv('API_MODEL') or os.getenv('MODEL'))
     parser.add_argument('--judge-provider', choices=choices, default=os.getenv('JUDGE_PROVIDER'))
     parser.add_argument('--judge-model', default=os.getenv('JUDGE_MODEL'))
     parser.add_argument('--bonus', action='store_true', help='Chạy bộ bonus riêng; không ảnh hưởng điểm chính')
